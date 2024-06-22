@@ -21,8 +21,8 @@ def check_valid_count_of_numbers(num1, num2):
     return: A number
     """
     while num2 > num1:
-        print("There are no so many numbers in the list. Try again")
-        num2 = int(input("How many words do you want to guees? "))
+        print("There are no so many numbers in the words list, Try again.")
+        num2 = int(input("How many words do you want to guess? "))
     return num2
 
 

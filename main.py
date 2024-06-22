@@ -4,8 +4,10 @@ from functions import *
 
 def main():
     print("Welcome to 'Guess The Number'!")
-    # Define thw word list by path of josn file
-    words_list = load_words(r"C:\Users\elroy\OneDrive\שולחן העבודה\Development\Python\Projects\Guess the number\words.json")
+    # Define the word list by path of json file
+    print(r"The file path is: 'C:\Users\elroy\OneDrive\שולחן העבודה\Development\Python\Projects\Guess the number\words.json' ")
+    file_path = input("Enter the file path please: ")
+    words_list = load_words(file_path)
     count_of_numbers = check_valid_count_of_numbers(len(words_list), int(input("How many words do you want to guess? ")))
     # Define the players and their name
     player1 = Player()
@@ -30,10 +32,10 @@ def main():
         
         runner = True
         while runner:
-            
+            # The game:
             # Player 1
             print()
-            user_guess = input(f"{player1.name}, Your turn.\nYour guess: ")
+            user_guess = input(f"{player1.name}, your turn.\nYour guess: ")
             get_guess_from_user( user_guess,player1.old_guesses, hidden_word)
             player1.hidden_word = hidden_word_status(hidden_word, player1.old_guesses)
             print(player1.hidden_word)
@@ -43,9 +45,9 @@ def main():
                 print(f"{player1.name} Win")
                 runner = False
             
-            # Player 1
+            # Player 2
             print()
-            user_guess = input(f"{player2.name}, Your turn\nYour guess: ")
+            user_guess = input(f"{player2.name}, your turn\nYour guess: ")
             get_guess_from_user( user_guess,player2.old_guesses, hidden_word)
             player2.hidden_word = hidden_word_status(hidden_word, player2.old_guesses)
             print(player2.hidden_word)
@@ -57,7 +59,7 @@ def main():
                 
         number_of_word += 1  
               
-    # Check the winner in the game            
+    # Checks who won the game          
     if player1.points > player2.points:
         print(f"{player1.name} is the winner!!!")
     elif player1.points == player2.points:
