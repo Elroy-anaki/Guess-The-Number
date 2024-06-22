@@ -1,10 +1,17 @@
 
 class Player:
-    name = ""
-    hidden_word = ""
-    old_guesses = []
-    score_by_game = 0
-    points = 0
+    
+    def __init__(self, name, hidden_word=None, old_guesses=None, score_by_game=None, points=int):
+        self.name = name
+        self.hidden_word = hidden_word
+        self.old_guesses = old_guesses
+        self.score_by_game = score_by_game
+        self.points = points
+    # name = ""
+    # hidden_word = ""
+    # old_guesses = []
+    # score_by_game = 0
+    # points = 0
     
         
     def add_score(self):
