@@ -1,16 +1,22 @@
 import json 
 
-def load_words(file_path):
+
+def load_words(file_path, string):
     """
-    Loads the words from json file
+    Loads the words from json file and checks the category 
     
     :params file_path: file path to the json file
+    :params string: category from the file
     :return: A list of words
     """
     with open(file_path, 'r') as json_file:
         data = json.load(json_file)
-        list = data['words']
+        while string not in data:
+            print("This category doesn't exist! Try again.")
+            string = input("Enter category please: ").strip().title()
+        list = data[string]
         return list
+    
     
 def check_valid_count_of_numbers(num1, num2):
     """
