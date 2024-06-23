@@ -7,12 +7,7 @@ class Player:
         self.old_guesses = old_guesses
         self.score_by_game = score_by_game
         self.points = points
-    # name = ""
-    # hidden_word = ""
-    # old_guesses = []
-    # score_by_game = 0
-    # points = 0
-    
+
         
     def add_score(self):
         self.score_by_game += 1

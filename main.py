@@ -1,5 +1,5 @@
 import time
-from players import * 
+from Player import * 
 from functions import *
 
 
@@ -8,13 +8,12 @@ def main():
     # Define the word list by path of json file
     print(r"The file path is: 'C:\Users\elroy\OneDrive\שולחן העבודה\Development\Python\Projects\Guess the number\words.json' ")
     file_path = input("Enter the file path please: ")
-    words_list = load_words(file_path)
+    words_list = load_words(file_path, input("Enter category please: "))
     count_of_numbers = check_valid_count_of_numbers(len(words_list), int(input("How many words do you want to guess? ")))
     # Define the players and their name
     player1 = Player(input("Player 1: "), points=0)
     player2 = Player(input("Player 2: "), points=0)
-    # player1.name = input("Player 1: ")
-    # player2.name = input("Player 2: ")
+
     time.sleep(1) 
     print("OK, let's start")
     number_of_word = 1
