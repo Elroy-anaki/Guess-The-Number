@@ -5,13 +5,11 @@ from functions import *
 
 def main():
     print("Welcome to 'Guess The Number'!")
-    # Define the word list by path of json file
-    print(r"The file path is: 'C:\Users\elroy\OneDrive\שולחן העבודה\Development\Python\Projects\Guess the number\words.json' ")
-    file_path = input("Enter the file path please: ")
+    # Define the word list by path of json file and category
     category = input("Enter category please: ").title()
-    words_list = load_words(file_path, category )
+    words_list = load_words(r'C:\Users\elroy\OneDrive\שולחן העבודה\Development\Python\Projects\Guess the number\words.json', category )
     count_of_numbers = check_valid_count_of_numbers(len(words_list), int(input("How many words do you want to guess? ")))
-    # Define the players and their name
+    # Define the players and their name - Only 2 players
     player1 = Player(input("Player 1: "), points=0)
     player2 = Player(input("Player 2: "), points=0)
 
