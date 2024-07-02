@@ -1,27 +1,23 @@
 import time
+import argparse
 from Player import * 
 from functions import *
 
-def get_players():
-    """
-    Creates and returns a list of Player objects based on user input for the number of players.
-    
-    :return: A list of Player objects.
-    """
-    num_players = int(input("Enter the number of players: "))
-    players = []
-    for i in range(num_players):
-        player_name = input(f"Player {i + 1}: ")
-        players.append(Player(player_name, points=0))
-    return players
 
 def main():
+    parser = argparse.ArgumentParser(description="Play 'Guess The Number' game.")
+    parser.add_argument('--file_path', type=str, required=True, help="Path to the JSON file with words.")
+    parser.add_argument('--category', type=str, required=True, help="Category to choose words from.")
+    parser.add_argument('--num_words', type=int, required=True, help="Number of words to guess.")
+    
+    args = parser.parse_args()
+    
     print("Welcome to 'Guess The Number'!")
     
     try:
         # Define the word list by path of json file and category
-        category = input("Enter category please: ").title()
-        words_list = load_words(r'C:\Users\elroy\OneDrive\שולחן העבודה\Development\Python\Projects\Guess the number\words.json', category)
+        category = args.category
+        words_list = load_words(args.file_path, category)
     except FileNotFoundError:
         print("The JSON file was not found. Please check the file path and try again.")
         return
@@ -29,7 +25,7 @@ def main():
         print("Error decoding the JSON file. Please check the file format and try again.")
         return
 
-    count_of_numbers = check_valid_count_of_numbers(len(words_list), int(input("How many words do you want to guess? ")))
+    count_of_numbers = check_valid_count_of_numbers(len(words_list), args.num_words)
 
     # Define the players
     players = get_players()
